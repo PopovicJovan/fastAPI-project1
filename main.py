@@ -15,7 +15,7 @@ async def create_quote(author_id: int, quote: str, db: Session = Depends(get_db)
 
 
 @app.get("/quotes")
-async def get_quotes(page: int, author_name: Optional[str] = None, db: Session = Depends(get_db)):
+async def get_quotes(page: Optional[int] = 1, author_name: Optional[str] = None, db: Session = Depends(get_db)):
     return crud.get_quotes(db=db, author_name=author_name, page=page)
 
 
@@ -30,7 +30,7 @@ async def create_author(author_name: str, db: Session = Depends(get_db)):
 
 
 @app.get("/authors")
-async def get_authors(page: int, author_name: Optional[str] = None, db: Session = Depends(get_db)):
+async def get_authors(page: Optional[int] = 1, author_name: Optional[str] = None, db: Session = Depends(get_db)):
     return crud.get_authors(db=db, author_name=author_name, page=page)
 
 
