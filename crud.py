@@ -66,6 +66,7 @@ def get_authors(db: Session, author_name: str = "", page: int = 1, size: int = 6
         }
     }
 
+
 def get_author(db: Session, author_id: int) -> Dict[str, Any] | HTTPException:
     author = db.query(Author).filter_by(id=author_id).first()
     if not author:
